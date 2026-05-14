@@ -3,8 +3,8 @@ set -e
 cd $HOME
 
 echo "==> 安装基础依赖"
-sudo apt-get update -y
-sudo apt-get install -y curl tar jq
+apt-get update -y
+apt-get install -y curl tar jq
 
 echo "==> 获取最新的 VS Code Server 版本号"
 COMMIT=$(curl -s -L \
