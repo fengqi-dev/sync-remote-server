@@ -3,8 +3,8 @@ set -e
 cd $HOME
 
 echo "==> 安装基础依赖"
-apt-get update -y
-apt-get install -y curl tar jq
+sudo apt-get update -y
+sudo apt-get install -y curl tar jq
 
 echo "==> 获取最新的 Cursor Server 版本号"
 JSON=$(curl -s -L \
@@ -53,7 +53,7 @@ done
 echo "==> 查看已安装扩展"
 "$SERVER_DIR/bin/cursor-server" --list-extensions --show-versions
 
-rm -rf "$HOME/.cursor-server/data/*"
+rm -rf $HOME/.cursor-server/data/*
 
 echo "==> 打包extensions目录"
 tar -czf "$HOME/cursor-server-full.tar.gz" -C "$HOME/.cursor-server" .

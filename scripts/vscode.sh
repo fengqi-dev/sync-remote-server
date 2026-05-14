@@ -3,8 +3,8 @@ set -e
 cd $HOME
 
 echo "==> 安装基础依赖"
-apt-get update -y
-apt-get install -y curl tar jq
+sudo apt-get update -y
+sudo apt-get install -y curl tar jq
 
 echo "==> 获取最新的 VS Code Server 版本号"
 COMMIT=$(curl -s -L \
@@ -54,7 +54,7 @@ echo "==> 查看已安装扩展"
 "$SERVER_DIR/bin/code-server" --list-extensions --show-versions
 
 echo "[\"Stable-$COMMIT\"]" > "$HOME/.vscode-server/cli/servers/lru.json"
-rm -rf "$HOME/.vscode-server/data/*"
+rm -rf $HOME/.vscode-server/data/*
 
 echo "==> 打包extensions目录"
 tar -czf "$HOME/vscode-server-full.tar.gz" -C "$HOME/.vscode-server" .
